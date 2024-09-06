@@ -27,7 +27,7 @@
           v-if="$q.screen.gt.xs"
         >
           <q-img
-            src="/logo_izing.png"
+            src="/logo.png"
             spinner-color="primary"
             style="height: 50px; width: 140px"
           />

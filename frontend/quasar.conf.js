@@ -127,8 +127,8 @@ module.exports = function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {maximumFileSizeToCacheInBytes: 5000000,}, // only for GenerateSW
       manifest: {
-        name: 'IZING',
-        short_name: 'IZING',
+        name: 'Chat Unilife',
+        short_name: 'Chat Unilife',
         description: 'Bot Multi-atendimento para whatsapp',
         display: 'standalone',
         orientation: 'portrait',
