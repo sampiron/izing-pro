@@ -261,8 +261,8 @@
             rounded
             append
             :max-files="5"
-            :max-file-size="15485760"
-            :max-total-size="15485760"
+            :max-file-size="104857600"
+            :max-total-size="104857600"
             accept=".txt, .xml, .jpg, .png, image/jpeg, .pdf, .doc, .docx, .mp4, .ogg, .mp3, .xls, .xlsx, .jpeg, .rar, .zip, .ppt, .pptx, image/*"
             @rejected="onRejectedFiles"
           />
