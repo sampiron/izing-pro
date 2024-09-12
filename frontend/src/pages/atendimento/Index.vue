@@ -562,7 +562,7 @@
                 </q-select>
               </q-card-section>
             </q-card>
-            <q-card
+            <!--<q-card
               class="bg-white q-mt-sm btn-rounded"
               style="width: 100%"
               bordered
@@ -631,7 +631,7 @@
 
                 </q-select>
               </q-card-section>
-            </q-card>
+            </q-card>-->
             <q-card
               class="bg-white q-mt-sm btn-rounded"
               style="width: 100%"
