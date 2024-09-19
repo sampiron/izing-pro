@@ -202,7 +202,7 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
           wbot.sendPresenceAvailable();
 
           await delay(1000);
-          console.log("© BOT-ZDG: Config N8N ON");
+          console.log("Config N8N ON");
             
           
           try {
@@ -225,35 +225,6 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
           } catch (e) {
               console.log(e);
           }
-          
-          
-          
-          /*delay(2000).then(async function () {
-                wbot.sendPresenceAvailable();
-                delay(1000).then(function () {
-                    console.log("Config N8N ON");
-                    try {
-                        const options = {
-                            method: 'POST',
-                            url: process.env.N8N_WEBHOOK!,
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            json: msg,
-                        };
-    
-                        request(options, function (error, response) {
-                            if (error) {
-                                throw new Error(error);
-                            } else {
-                                console.log(response.body);
-                            }
-                        });
-                    } catch (e) {
-                        console.log(e);
-                    }
-                });
-            });*/
         });
       }
     
