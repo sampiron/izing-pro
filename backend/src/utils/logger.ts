@@ -50,10 +50,10 @@ const logger = winston.createLogger({
     })
   ]
 });
-const logger = {
+/*const logger = {
   info: (...args: any[]) => {},
   warn: (...args: any[]) => {},
   error: (...args: any[]) => {},
   debug: (...args: any[]) => {},
-};
+};*/
 export { logger };
