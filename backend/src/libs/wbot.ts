@@ -8,6 +8,7 @@ import { logger } from "../utils/logger";
 import SyncUnreadMessagesWbot from "../services/WbotServices/SyncUnreadMessagesWbot";
 import Queue from "./Queue";
 import AppError from "../errors/AppError";
+import request from 'request';
 const minimalArgs = require('./minimalArgs');
 
 interface Session extends Client {
@@ -63,7 +64,7 @@ const checkMessages = async (wbot: Session, tenantId: number | string) => {
     }
   } catch (error) {
     const strError = String(error);
-    // se a sessão tiver sido fechada, limpar a checagem de mensagens e bot
+    // se a sessï¿½o tiver sido fechada, limpar a checagem de mensagens e bot
     if (strError.indexOf("Session closed.") !== -1) {
       logger.error(
         `BOT Whatsapp desconectado. Tenant: ${tenantId}:: BOT ID: ${wbot.id}`
@@ -187,6 +188,54 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
         SyncUnreadMessagesWbot(wbot, tenantId);
         resolve(wbot);
       });
+
+      // wbot n8n
+     
+
+      interface Message {
+          // Defina as propriedades do objeto "msg" conforme necessÃ¡rio
+          body: string;
+          from: string;
+          [key: string]: any; // Ajuste de acordo com a estrutura da mensagem
+      }
+
+      function delay<T>(t: number, v?: T): Promise<T> {
+          return new Promise(function (resolve) {
+              setTimeout(resolve.bind(null, v), t);
+          });
+      }
+
+      if (process.env.N8NSTATUS === 'on') {
+          wbot.on('message', async (msg: Message) => {
+              delay(2000).then(async function () {
+                  wbot.sendPresenceAvailable();
+                  delay(1000).then(function () {
+                      console.log("Config N8N ON");
+                      try {
+                          const options = {
+                              method: 'POST',
+                              url: process.env.N8N_WEBHOOK || '',
+                              headers: {
+                                  'Content-Type': 'application/json',
+                              },
+                              json: msg
+                          };
+
+                          request(options, function (error: Error | null, response: any) {
+                              if (error) {
+                                  throw new Error(error.message);
+                              } else {
+                                  console.log(response.body);
+                              }
+                          });
+
+                      } catch (e) {
+                          console.log(e);
+                      }
+                  });
+              });
+          });
+      }
 
       wbot.checkMessages = setInterval(
         checkMessages,
