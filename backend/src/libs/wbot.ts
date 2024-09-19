@@ -189,13 +189,16 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
         resolve(wbot);
       });
       //n8n
+      
       if (process.env.N8NSTATUS === 'on') 
       {
+        
         wbot.on('message', async (msg: Message) => {
+            
             function delay<T>(t: number, v?: T): Promise<T> {
-                return new Promise(function (resolve) {
-                    setTimeout(resolve.bind(null, v), t);
-                });
+              return new Promise(function (resolve) {
+                  setTimeout(() => resolve(v), t);
+              });
             }
     
             delay(2000).then(async function () {
