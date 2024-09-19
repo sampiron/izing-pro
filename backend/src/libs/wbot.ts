@@ -192,7 +192,7 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
       // wbot n8n
      
 
-      interface Message {
+      /*interface Message {
           // Defina as propriedades do objeto "msg" conforme necessário
           body: string;
           from: string;
@@ -205,7 +205,7 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
           });
       }
 
-      /*if (process.env.N8NSTATUS === 'on') {
+      if (process.env.N8NSTATUS === 'on') {
           wbot.on('message', async (msg: Message) => {
               delay(2000).then(async function () {
                   wbot.sendPresenceAvailable();
