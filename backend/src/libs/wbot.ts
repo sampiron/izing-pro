@@ -195,16 +195,43 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
         
         wbot.on('message', async (msg: Message) => {
             
-            function delay<T>(t: number, v?: T): Promise<T> {
-              return new Promise(function (resolve) {
-                  setTimeout(() => resolve(v), t);
+          function delay(t: number): Promise<void> {
+            return new Promise((resolve) => setTimeout(resolve, t));
+          }
+          await delay(2000);
+          wbot.sendPresenceAvailable();
+
+          await delay(1000);
+          console.log("© BOT-ZDG: Config N8N ON");
+            
+          
+          try {
+              const options = {
+                  method: 'POST',
+                  url: process.env.N8N_WEBHOOK!,
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  json: msg,
+              };
+
+              request(options, function (error, response) {
+                  if (error) {
+                      throw new Error(error);
+                  } else {
+                      console.log(response.body);
+                  }
               });
-            }
-    
-            delay(2000).then(async function () {
+          } catch (e) {
+              console.log(e);
+          }
+          
+          
+          
+          /*delay(2000).then(async function () {
                 wbot.sendPresenceAvailable();
                 delay(1000).then(function () {
-                    console.log("© BOT-ZDG: Config N8N ON");
+                    console.log("Config N8N ON");
                     try {
                         const options = {
                             method: 'POST',
@@ -226,7 +253,7 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
                         console.log(e);
                     }
                 });
-            });
+            });*/
         });
       }
     
