@@ -192,7 +192,18 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
       
       if (process.env.N8NSTATUS === 'on') 
       {
-        
+        // Variável para armazenar a última mensagem enviada pelo bot
+        let lastBotMessage = '';
+
+        // Evento disparado para todas as mensagens enviadas ou recebidas
+        wbot.on('message_create', (msg: Message) => {
+            if (msg.fromMe) {
+                console.log('Mensagem enviada pelo bot:', msg.body);
+                // Armazenando a mensagem enviada pelo bot
+                lastBotMessage = msg.body;
+            }
+        });
+
         wbot.on('message', async (msg: Message) => {
             
           function delay(t: number): Promise<void> {
@@ -202,17 +213,27 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
           wbot.sendPresenceAvailable();
 
           await delay(1000);
-          console.log("Config N8N ON");
+          //console.log("Config N8N ON");
             
-          
           try {
+            // Capturando o ID único da mensagem/conversa recebida
+            const messageId = msg.id._serialized;
+
+            const selectedData = {
+              from: msg.from,         // Número do remetente
+              body: msg.body,         // Conteúdo da mensagem recebida
+              timestamp: msg.timestamp, // Data/hora da mensagem recebida
+              messageId: messageId,   // ID único da mensagem recebida
+              botResponse: lastBotMessage // A última mensagem enviada pelo bot
+          };
+
               const options = {
                   method: 'POST',
                   url: process.env.N8N_WEBHOOK!,
                   headers: {
                       'Content-Type': 'application/json',
                   },
-                  json: msg,
+                  json: selectedData,
               };
 
               request(options, function (error, response) {
