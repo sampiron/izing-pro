@@ -115,10 +115,10 @@
 </template>
 <script>
 export default {
-  computed: {
-    logoUrl() {
-      return process.env.VUE_APP_S3_LOGO;
-    }
+  data() {
+    return {
+      logoUrl: process.env.VUE_APP_S3_LOGO
+    };
   }
 };
 </script>
