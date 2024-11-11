@@ -114,16 +114,6 @@
   </q-layout>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      logoUrl: process.env.VUE_APP_S3_LOGO
-    };
-  }
-};
-</script>
-
-<script>
 import { required, email } from 'vuelidate/lib/validators'
 
 export default {
