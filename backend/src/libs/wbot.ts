@@ -213,7 +213,6 @@ export const initWbot = async (whatsapp: Whatsapp): Promise<Session> => {
           wbot.sendPresenceAvailable();
 
           await delay(1000);
-          //console.log("Config N8N ON");
             
           try {
             // Capturando o ID único da mensagem/conversa recebida
