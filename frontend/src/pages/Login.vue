@@ -12,7 +12,7 @@
           class="card q-pa-md shadow-10"
           style="border-top: 5px solid #3E72AF; background-color: rgba(255,255,255,0.75); border-radius: 20px"
         >
-          <q-card-section class="text-primary text-center" v-if="process.env.VUE_APP_S3 === 'false'">
+          <q-card-section class="text-primary text-center">
             <q-img
               src="/logo.png"
               spinner-color="white"
@@ -23,7 +23,7 @@
           </q-card-section>
           <q-card-section class="text-primary text-center" v-if="process.env.VUE_APP_S3 === 'true'">
             <q-img
-              :src="logoUrl"
+              src="logoUrl"
               spinner-color="white"
               style="height: 120px; max-width: 300px"
               class="q-mb-lg q-px-md"
