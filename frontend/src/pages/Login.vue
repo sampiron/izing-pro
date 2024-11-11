@@ -12,7 +12,24 @@
           class="card q-pa-md shadow-10"
           style="border-top: 5px solid #3E72AF; background-color: rgba(255,255,255,0.75); border-radius: 20px"
         >
-         
+          <q-card-section class="text-primary text-center" v-if="process.env.VUE_APP_S3 === 'false'">
+            <q-img
+              src="/logo.png"
+              spinner-color="white"
+              style="height: 120px; max-width: 300px"
+              class="q-mb-lg q-px-md"
+            />
+            <q-separator spaced />
+          </q-card-section>
+          <q-card-section class="text-primary text-center" v-if="process.env.VUE_AP_S3 === 'true'">
+            <q-img
+              :src="logoUrl"
+              spinner-color="white"
+              style="height: 120px; max-width: 300px"
+              class="q-mb-lg q-px-md"
+            />
+            <q-separator spaced />
+          </q-card-section>
           <q-card-section class="text-primary">
             <div class="text-h6">Bem vindo!</div>
             <div class="text-caption text-grey">Faça login...</div>
@@ -99,6 +116,13 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
+export default {
+  computed: {
+    logoUrl() {
+      return process.env.VUE_APP_S3_LOGO;
+    }
+  }
+};
 export default {
   name: 'Login',
   data () {
