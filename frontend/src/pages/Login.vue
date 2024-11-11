@@ -21,7 +21,6 @@
             />
             <q-separator spaced />
           </q-card-section>
-          
           <q-card-section class="text-primary">
             <div class="text-h6">Bem vindo!</div>
             <div class="text-caption text-grey">Faça login...</div>
