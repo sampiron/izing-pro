@@ -14,7 +14,7 @@
         >
           <q-card-section class="text-primary text-center">
             <q-img
-              src="https://s3.cloudprime.cloud/cloudprime/logo/01J719PKXHSJ20Q5XRZ93ZFFYG.png"
+              src="https://s3.cloudprime.cloud/cloudprime/logo/01J719PKRQ2RQPB46ET3D653BD.png"
               spinner-color="white"
               style="height: 120px; max-width: 300px"
               class="q-mb-lg q-px-md"

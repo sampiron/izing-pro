@@ -27,7 +27,7 @@
           v-if="$q.screen.gt.xs"
         >
           <q-img
-            src="/logo.png"
+            src="https://s3.cloudprime.cloud/cloudprime/logo/01J719PKRQ2RQPB46ET3D653BD.png"
             spinner-color="primary"
             style="height: 50px; width: 140px"
           />
