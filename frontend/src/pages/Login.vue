@@ -21,15 +21,7 @@
             />
             <q-separator spaced />
           </q-card-section>
-          <q-card-section class="text-primary text-center" v-if="process.env.VUE_APP_S3 === 'true'">
-            <q-img
-              src="logoUrl"
-              spinner-color="white"
-              style="height: 120px; max-width: 300px"
-              class="q-mb-lg q-px-md"
-            />
-            <q-separator spaced />
-          </q-card-section>
+          
           <q-card-section class="text-primary">
             <div class="text-h6">Bem vindo!</div>
             <div class="text-caption text-grey">Faça login...</div>
