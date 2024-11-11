@@ -113,9 +113,7 @@
     </q-page-container>
   </q-layout>
 </template>
-
 <script>
-import { required, email } from 'vuelidate/lib/validators'
 export default {
   computed: {
     logoUrl() {
@@ -123,6 +121,11 @@ export default {
     }
   }
 };
+</script>
+
+<script>
+import { required, email } from 'vuelidate/lib/validators'
+
 export default {
   name: 'Login',
   data () {
