@@ -21,7 +21,7 @@
             />
             <q-separator spaced />
           </q-card-section>
-          <q-card-section class="text-primary text-center" v-if="process.env.VUE_AP_S3 === 'true'">
+          <q-card-section class="text-primary text-center" v-if="process.env.VUE_APP_S3 === 'true'">
             <q-img
               :src="logoUrl"
               spinner-color="white"
