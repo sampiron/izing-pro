@@ -18,7 +18,6 @@
               spinner-color="white"
               style="height: 120px; max-width: 300px"
               class="q-mb-lg q-px-md"
-              
             />
             <q-separator spaced />
           </q-card-section>
